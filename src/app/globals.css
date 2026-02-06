@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff7fb;
+  --foreground: #24121b;
+  --rose: #ff4d6d;
+  --blush: #ffd6e0;
+  --plum: #5a2a4b;
+  --pearl: #fff1f6;
+  --gold: #ffd1a8;
 }
 
 @theme inline {
@@ -14,13 +19,209 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #12070e;
+    --foreground: #ffeaf2;
+    --rose: #ff6b82;
+    --blush: #3a1424;
+    --plum: #f3c6d4;
+    --pearl: #220b16;
+    --gold: #f6c79d;
   }
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(
+      circle at top left,
+      rgba(255, 214, 224, 0.65),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 209, 168, 0.45),
+      transparent 50%
+    ),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), "Helvetica Neue", sans-serif;
+}
+
+.romantic-glow {
+  box-shadow: 0 24px 60px rgba(255, 77, 109, 0.18);
+}
+
+.glass-card {
+  background: color-mix(in srgb, var(--pearl) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--blush) 60%, transparent);
+  backdrop-filter: blur(16px);
+}
+
+.floating-heart {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--rose);
+  opacity: 0.5;
+  transform: rotate(45deg);
+  animation: float 12s ease-in-out infinite;
+}
+
+.floating-heart::before,
+.floating-heart::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--rose);
+}
+
+.floating-heart::before {
+  left: -6px;
+}
+
+.floating-heart::after {
+  top: -6px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(-40px) rotate(45deg);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0.35;
+  }
+}
+
+.celebration-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 214, 224, 0.6),
+    transparent 60%
+  );
+  animation: fadeLayer 9s ease forwards;
+}
+
+.celebration-message {
+  padding: 24px 32px;
+  border-radius: 999px;
+  background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 241, 246, 0.85)
+    )
+    padding-box,
+    linear-gradient(135deg, rgba(255, 77, 109, 0.6), rgba(255, 209, 168, 0.7))
+      border-box;
+  border: 1px solid transparent;
+  color: var(--plum);
+  text-align: center;
+  box-shadow:
+    0 24px 60px rgba(255, 77, 109, 0.25),
+    inset 0 0 18px rgba(255, 255, 255, 0.6);
+  animation: popIn 0.9s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.celebration-message::after {
+  content: "";
+  position: absolute;
+  inset: -20% 0 0 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 214, 224, 0.7),
+    transparent 70%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.celebration-message h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.celebration-message p {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.burst-heart {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: var(--rose);
+  opacity: 0;
+  transform: rotate(45deg) scale(0.4);
+  animation: burst 4.2s ease forwards;
+}
+
+.burst-heart::before,
+.burst-heart::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--rose);
+}
+
+.burst-heart::before {
+  left: -9px;
+}
+
+.burst-heart::after {
+  top: -9px;
+}
+
+@keyframes burst {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) rotate(45deg) scale(0.4);
+  }
+  30% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) rotate(45deg) scale(1.4);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeLayer {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
