@@ -66,6 +66,10 @@ export default function Home() {
   const [celebrate, setCelebrate] = useState(false);
   const [runawayStyle, setRunawayStyle] = useState({ top: 58, left: 62 });
   const [runawayLabel, setRunawayLabel] = useState("Catch me if you can");
+  const [securityUnlocked, setSecurityUnlocked] = useState(false);
+  const [securityCode, setSecurityCode] = useState("");
+  const [securityError, setSecurityError] = useState("");
+  const accessCode = "0214";
 
   const dodgeLabels = useMemo(
     () => [
@@ -92,6 +96,16 @@ export default function Home() {
     setShowGate(false);
     setCelebrate(true);
     setTimeout(() => setCelebrate(false), 9000);
+  };
+
+  const handleSecuritySubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (securityCode.trim() === accessCode) {
+      setSecurityUnlocked(true);
+      setSecurityError("");
+    } else {
+      setSecurityError("Oops, that code isn't right. Try again.");
+    }
   };
 
   return (
@@ -133,7 +147,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="relative z-10">
+      <main className={`relative z-10 ${securityUnlocked ? "" : "blur-sm"}`}>
         <section className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-10 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="flex flex-col gap-6">
@@ -346,7 +360,7 @@ export default function Home() {
         </div>
       ) : null}
 
-      {showGate ? (
+      {showGate && securityUnlocked ? (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-rose-950/40 px-6 backdrop-blur">
           <div className="relative w-full max-w-xl overflow-hidden rounded-[32px] bg-gradient-to-br from-rose-100 via-rose-50 to-amber-50 p-8 text-center shadow-2xl">
             <p className="text-xs uppercase tracking-[0.35em] text-rose-400">
@@ -408,6 +422,43 @@ export default function Home() {
               every giggle, every adventure, and every kiss.
             </p>
           </div>
+        </div>
+      ) : null}
+
+      {!securityUnlocked ? (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-rose-950/50 px-6 backdrop-blur">
+          <form
+            onSubmit={handleSecuritySubmit}
+            className="glass-card romantic-glow w-full max-w-md rounded-3xl p-8 text-center"
+          >
+            <p className="text-xs uppercase tracking-[0.35em] text-rose-400">
+              Private access
+            </p>
+            <h2 className="mt-4 text-2xl font-semibold text-rose-800">
+              Enter our secret code
+            </h2>
+            <p className="mt-3 text-sm text-rose-600/90">
+              This love story is just for us.
+            </p>
+            <input
+              type="password"
+              value={securityCode}
+              onChange={(event) => setSecurityCode(event.target.value)}
+              placeholder="••••"
+              className="mt-6 w-full rounded-full border border-rose-200 bg-white/80 px-5 py-3 text-center text-sm text-rose-700 outline-none focus:border-rose-400"
+            />
+            {securityError ? (
+              <p className="mt-3 text-xs uppercase tracking-[0.2em] text-rose-500">
+                {securityError}
+              </p>
+            ) : null}
+            <button
+              type="submit"
+              className="mt-6 w-full rounded-full bg-rose-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-rose-500"
+            >
+              Unlock the love
+            </button>
+          </form>
         </div>
       ) : null}
     </div>
