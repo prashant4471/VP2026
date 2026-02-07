@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Valentine SPA",
+  title: "HELLO YOU !!!! ❤",
   description: "A romantic single-page experience crafted for Valentine's Day.",
 };
 

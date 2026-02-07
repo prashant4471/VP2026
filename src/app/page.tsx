@@ -305,7 +305,7 @@ export default function Home() {
       <header className="relative z-10">
         <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6 text-sm font-medium uppercase tracking-[0.2em] text-rose-300">
           <span className="text-lg font-semibold tracking-[0.3em] text-rose-200">
-            Love Note
+            HELLO YOU !!!! ❤
           </span>
           <span className="text-xs text-rose-200/80">Feb 7 - 14</span>
         </nav>
