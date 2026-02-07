@@ -314,12 +314,14 @@ export default function Home() {
       </div>
 
       <header className="relative z-10">
-        <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6 text-sm font-medium uppercase tracking-[0.2em] text-rose-300">
-          <span className="text-lg font-semibold tracking-[0.3em] text-rose-200">
-            HELLO YOU !!!! ❤
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center px-6 py-8 text-center">
+          <span className="font-romantic text-5xl font-semibold tracking-[0.08em] text-rose-200 sm:text-6xl lg:text-7xl">
+            Hello you !!!! ❤
           </span>
-          <span className="text-xs text-rose-200/80">Feb 7 - 14</span>
-        </nav>
+          <span className="mt-3 text-xs uppercase tracking-[0.3em] text-rose-300">
+            Feb 7 - 14
+          </span>
+        </div>
       </header>
 
       <main className={`relative z-10 ${appUnlocked ? "" : "blur-sm"}`}>

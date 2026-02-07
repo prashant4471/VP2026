@@ -45,6 +45,10 @@ body {
   font-family: var(--font-geist-sans), "Helvetica Neue", sans-serif;
 }
 
+.font-romantic {
+  font-family: var(--font-dancing-script), "Times New Roman", cursive;
+}
+
 .romantic-glow {
   box-shadow: 0 24px 60px rgba(255, 77, 109, 0.18);
 }
