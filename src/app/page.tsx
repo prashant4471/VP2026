@@ -203,6 +203,7 @@ export default function Home() {
   const [showSurprise, setShowSurprise] = useState(false);
   const [runawayStyle, setRunawayStyle] = useState({ top: 58, left: 62 });
   const [runawayLabel, setRunawayLabel] = useState("Catch me if you can");
+  const [dayMessage, setDayMessage] = useState<string | null>(null);
 
   const spotlight = useMemo(
     () => ["Slow dancing", "Candle glow", "Playlist of us", "Love notes"],
@@ -259,6 +260,30 @@ export default function Home() {
   const activeContent = selectedDay ? dayContent[selectedDay] : null;
   const activeCode = selectedDay ? dayCodes[selectedDay] : null;
   const isRoseDay = selectedDay === "7";
+
+  const handleDaySelect = (day: string) => {
+    const today = new Date();
+    const currentDay = today.getDate();
+    const currentMonth = today.getMonth() + 1;
+    const targetDay = Number(day);
+
+    if (currentMonth === 2 && currentDay === targetDay) {
+      setSelectedDay(day);
+      setDayMessage(null);
+      return;
+    }
+
+    if (currentMonth === 2 && currentDay < targetDay) {
+      setDayMessage(
+        "Not yet, gorgeous. This surprise is saving its best for tomorrow."
+      );
+      return;
+    }
+
+    setDayMessage(
+      "This card only opens on its special day. Come back when the calendar is ready to spoil you."
+    );
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -332,7 +357,7 @@ export default function Home() {
               <button
                 key={card.day}
                 type="button"
-                onClick={() => setSelectedDay(card.day)}
+                onClick={() => handleDaySelect(card.day)}
                 className="glass-card group rounded-3xl p-6 text-left text-rose-200 transition hover:-translate-y-1"
               >
                 <div className="flex items-center justify-between">
@@ -460,7 +485,7 @@ export default function Home() {
                     <div className="overflow-hidden rounded-2xl border border-rose-400/30 bg-rose-950/40">
                       <video
                         className="h-60 w-full object-cover object-bottom sm:h-72"
-                        src="/rose_day.mp4"
+                        src="/VP2026/rose_day.mp4"
                         autoPlay
                         loop
                         muted
@@ -504,6 +529,26 @@ export default function Home() {
                 ) : null}
               </div>
             </div>
+          </div>
+        </div>
+      ) : null}
+
+      {dayMessage ? (
+        <div className="fixed inset-0 z-[58] flex items-center justify-center bg-rose-950/70 px-6 backdrop-blur">
+          <div className="glass-card romantic-glow w-full max-w-md rounded-3xl p-8 text-center text-rose-200">
+            <p className="text-xs uppercase tracking-[0.35em] text-rose-300">
+              Patience, love
+            </p>
+            <h3 className="mt-4 text-2xl font-semibold text-rose-100">
+              {dayMessage}
+            </h3>
+            <button
+              type="button"
+              onClick={() => setDayMessage(null)}
+              className="mt-6 rounded-full border border-rose-400/60 px-5 py-2 text-sm font-semibold text-rose-200"
+            >
+              I&apos;ll wait 💗
+            </button>
           </div>
         </div>
       ) : null}
