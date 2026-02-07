@@ -69,7 +69,7 @@ const dayContent: Record<string, DayContent> = {
   "7": {
     name: "Rose Day",
     emoji: "🌹",
-    headline: "Happy Rose Day, beautiful.",
+    headline: "Happy Rose Day, Beautiful 🌹",
     intro:
       "A rose for your smile, a bloom for your grace — today I celebrate the magic that is you.\nYour laugh is the sunlight, your heart is the spring; with every petal, my love learns to sing.\nTake this wish, soft and true, wrapped in blush and morning dew — Happy Rose Day, my beautiful you.",
     vibe: "Velvet petals, candle glow, and a handwritten note tucked in your bag.",
@@ -316,7 +316,7 @@ export default function Home() {
       <header className="relative z-10">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center px-6 py-8 text-center">
           <span className="font-romantic text-5xl font-semibold tracking-[0.08em] text-rose-200 sm:text-6xl lg:text-7xl">
-            Hello you !!!! ❤
+            Hello You !!!! ❤
           </span>
           <span className="mt-3 text-xs uppercase tracking-[0.3em] text-rose-300">
             Feb 7 - 14
@@ -332,7 +332,7 @@ export default function Home() {
                 February 7 - 14
               </p>
               <h1 className="text-4xl font-semibold leading-tight text-rose-100 sm:text-5xl">
-                Pick a day, unlock a love story.
+                Pick a Day, Unlock a Love Story
               </h1>
               <p className="text-lg leading-relaxed text-rose-200/80">
                 Each day has its own little surprise. Choose a card, enter the
@@ -456,7 +456,7 @@ export default function Home() {
                         Rose day wishes
                       </p>
                       <h3 className="mt-4 text-2xl font-semibold rose-shimmer">
-                        Happy Rose Day, beautiful 🌹
+                        Happy Rose Day, Beautiful 🌹
                       </h3>
                       <p className="mt-3 text-sm text-rose-100/80">
                         You are the bloom that softens every season. Today we
