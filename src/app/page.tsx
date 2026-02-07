@@ -204,6 +204,8 @@ export default function Home() {
   const [runawayStyle, setRunawayStyle] = useState({ top: 58, left: 62 });
   const [runawayLabel, setRunawayLabel] = useState("Catch me if you can");
   const [dayMessage, setDayMessage] = useState<string | null>(null);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [welcomeCelebrate, setWelcomeCelebrate] = useState(false);
 
   const spotlight = useMemo(
     () => ["Slow dancing", "Candle glow", "Playlist of us", "Love notes"],
@@ -254,6 +256,15 @@ export default function Home() {
     if (selectedDay === "7" && unlocked) {
       setRoseCelebrate(true);
       setTimeout(() => setRoseCelebrate(false), 7000);
+    }
+  };
+
+  const handleAppUnlock = (unlocked: boolean) => {
+    setAppUnlocked(unlocked);
+    if (unlocked) {
+      setShowWelcome(true);
+      setWelcomeCelebrate(true);
+      setTimeout(() => setWelcomeCelebrate(false), 5000);
     }
   };
 
@@ -535,7 +546,7 @@ export default function Home() {
 
       {dayMessage ? (
         <div className="fixed inset-0 z-[58] flex items-center justify-center bg-rose-950/70 px-6 backdrop-blur">
-          <div className="glass-card romantic-glow w-full max-w-md rounded-3xl p-8 text-center text-rose-200">
+          <div className="glass-card romantic-glow welcome-pop w-full max-w-md rounded-3xl p-8 text-center text-rose-200">
             <p className="text-xs uppercase tracking-[0.35em] text-rose-300">
               Patience, love
             </p>
@@ -558,7 +569,7 @@ export default function Home() {
         title="Enter our secret code"
         subtitle="This calendar is just for us."
         buttonLabel="Unlock the calendar"
-        onUnlockChange={setAppUnlocked}
+        onUnlockChange={handleAppUnlock}
       />
 
       {appUnlocked && selectedDay && activeCode ? (
@@ -663,6 +674,56 @@ export default function Home() {
               </button>
             </div>
           </div>
+        </div>
+      ) : null}
+
+      {showWelcome ? (
+        <div className="welcome-overlay fixed inset-0 z-[57] flex items-center justify-center bg-rose-950/60 px-6 backdrop-blur">
+          <div className="glass-card romantic-glow welcome-pop w-full max-w-md rounded-3xl p-8 text-center text-rose-200">
+            <p className="text-xs uppercase tracking-[0.35em] text-rose-300">
+              Welcome in
+            </p>
+            <h3 className="mt-4 text-2xl font-semibold text-rose-100">
+              Okay, wow — you just made me the luckiest human 💘
+            </h3>
+            <p className="mt-3 text-sm text-rose-200/80">
+              Consider this our official love quest unlocked. I'm all in for
+              every giggle, every adventure, and every kiss.
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowWelcome(false)}
+              className="mt-6 rounded-full border border-rose-400/60 px-5 py-2 text-sm font-semibold text-rose-200"
+            >
+              Let&apos;s go 💗
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {welcomeCelebrate ? (
+        <div className="welcome-celebration pointer-events-none">
+          {Array.from({ length: 26 }).map((_, index) => (
+            <span
+              key={`welcome-heart-${index}`}
+              className="welcome-heart"
+              style={{
+                left: `${(index % 8) * 12 + 4}%`,
+                animationDelay: `${index * 0.08}s`,
+              }}
+            />
+          ))}
+          {Array.from({ length: 16 }).map((_, index) => (
+            <span
+              key={`welcome-sparkle-${index}`}
+              className="welcome-sparkle"
+              style={{
+                left: `${(index % 6) * 16 + 8}%`,
+                top: `${Math.floor(index / 6) * 25 + 12}%`,
+                animationDelay: `${index * 0.2}s`,
+              }}
+            />
+          ))}
         </div>
       ) : null}
 
