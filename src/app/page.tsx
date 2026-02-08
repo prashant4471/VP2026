@@ -288,21 +288,24 @@ export default function Home() {
     const currentMonth = today.getMonth() + 1;
     const targetDay = Number(day);
 
-    if (currentMonth === 2 && currentDay === targetDay) {
+    const start = new Date(today.getFullYear(), 1, targetDay, 16, 0, 0, 0);
+    const end = new Date(today.getFullYear(), 1, targetDay + 1, 16, 0, 0, 0);
+
+    if (currentMonth === 2 && today >= start && today < end) {
       setSelectedDay(day);
       setDayMessage(null);
       return;
     }
 
-    if (currentMonth === 2 && currentDay < targetDay) {
+    if (currentMonth === 2 && today < start) {
       setDayMessage(
-        "Not yet, gorgeous. This surprise is saving its best for tomorrow."
+        "Not yet, gorgeous. This surprise opens at 4:00 PM and is saving its best just for you."
       );
       return;
     }
 
     setDayMessage(
-      "This card only opens on its special day. Come back when the calendar is ready to spoil you."
+      "This card only opens from 4:00 PM to 4:00 PM the next day. Come back in its perfect window."
     );
   };
 
