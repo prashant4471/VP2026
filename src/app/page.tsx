@@ -84,12 +84,12 @@ const dayContent: Record<string, DayContent> = {
   "8": {
     name: "Propose Day",
     emoji: "💍",
-    headline: "A tiny promise, a giant yes in my heart.",
+    headline: "My heart says it softly, my eyes say it loud.",
     intro: "Today is for bold words, happy nerves, and choosing each other again.",
     vibe: "Heartbeats synced, hands entwined, and a question with stars behind it.",
     dares: [
       "Whisper one dreamy plan for our future.",
-      "Pick the name for our imaginary puppy.",
+      "Pick our couple nickname for the day.",
       "Tell me how you'd ask me to dance.",
     ],
     spotlight: "I'm proposing a lifetime of tiny adventures with you.",
@@ -200,6 +200,8 @@ export default function Home() {
   const [celebrate, setCelebrate] = useState(false);
   const [roseCelebrate, setRoseCelebrate] = useState(false);
   const [roseConfetti, setRoseConfetti] = useState(false);
+  const [promiseCelebrate, setPromiseCelebrate] = useState(false);
+  const [proposeCelebrate, setProposeCelebrate] = useState(false);
   const [showSurprise, setShowSurprise] = useState(false);
   const [runawayStyle, setRunawayStyle] = useState({ top: 58, left: 62 });
   const [runawayLabel, setRunawayLabel] = useState("Catch me if you can");
@@ -256,6 +258,14 @@ export default function Home() {
     if (selectedDay === "7" && unlocked) {
       setRoseCelebrate(true);
       setTimeout(() => setRoseCelebrate(false), 7000);
+    }
+    if (selectedDay === "11" && unlocked) {
+      setPromiseCelebrate(true);
+      setTimeout(() => setPromiseCelebrate(false), 6000);
+    }
+    if (selectedDay === "8" && unlocked) {
+      setProposeCelebrate(true);
+      setTimeout(() => setProposeCelebrate(false), 6000);
     }
   };
 
@@ -509,6 +519,22 @@ export default function Home() {
                       Two cozy hearts, one forever cuddle. 🌹
                     </p>
                   </div>
+                ) : selectedDay === "8" ? (
+                  <div className="space-y-4">
+                    <div className="overflow-hidden rounded-2xl border border-rose-400/30 bg-rose-950/40">
+                      <video
+                        className="propose-video h-60 w-full object-contain sm:h-72"
+                        src="/VP2026/propose_day.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      />
+                    </div>
+                    <p className="rose-glow-text text-base font-semibold text-rose-100 sm:text-lg">
+                      A forever kind of yes, wrapped in sparkle. 💍
+                    </p>
+                  </div>
                 ) : (
                   <>
                     <p className="text-xs uppercase tracking-[0.3em] text-rose-300">
@@ -759,6 +785,39 @@ export default function Home() {
               }}
             />
           ))}
+        </div>
+      ) : null}
+
+      {promiseCelebrate ? (
+        <div className="promise-celebration pointer-events-none">
+          {Array.from({ length: 18 }).map((_, index) => (
+            <span
+              key={`promise-star-${index}`}
+              className="promise-star"
+              style={{
+                left: `${(index % 6) * 16 + 8}%`,
+                animationDelay: `${index * 0.2}s`,
+              }}
+            />
+          ))}
+          <div className="promise-ribbon">🤞</div>
+        </div>
+      ) : null}
+
+      {proposeCelebrate ? (
+        <div className="propose-celebration pointer-events-none">
+          {Array.from({ length: 16 }).map((_, index) => (
+            <span
+              key={`propose-ring-${index}`}
+              className="propose-ring"
+              style={{
+                left: `${(index % 8) * 12 + 6}%`,
+                animationDelay: `${index * 0.18}s`,
+              }}
+            />
+          ))}
+          <div className="propose-glow">💍</div>
+          <div className="propose-burst" />
         </div>
       ) : null}
     </div>
