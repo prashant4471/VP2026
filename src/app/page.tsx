@@ -104,7 +104,7 @@ const dayContent: Record<string, DayContent> = {
     dares: [
       "Send me your best 'caught stealing chocolate' pose.",
       "Confess your sweetest craving.",
-      "Pick a dessert we should share tonight.",
+      "Tell me your favourite desert that we should share next time ( except Tiramisu(SU) 😜 )",
     ],
     spotlight: "You are my favorite kind of sweet — the kind I can't stop savoring.",
     closing: "Save me a bite, but keep the kiss.",
@@ -192,6 +192,7 @@ const dayCodes: Record<string, string> = {
   "14": "1414",
 };
 
+
 export default function Home() {
   const [appUnlocked, setAppUnlocked] = useState(false);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
@@ -202,6 +203,11 @@ export default function Home() {
   const [roseConfetti, setRoseConfetti] = useState(false);
   const [promiseCelebrate, setPromiseCelebrate] = useState(false);
   const [proposeCelebrate, setProposeCelebrate] = useState(false);
+  const [chocoCelebrate, setChocoCelebrate] = useState(false);
+  const [teddyCelebrate, setTeddyCelebrate] = useState(false);
+  const [hugCelebrate, setHugCelebrate] = useState(false);
+  const [kissCelebrate, setKissCelebrate] = useState(false);
+  const [valentineCelebrate, setValentineCelebrate] = useState(false);
   const [showSurprise, setShowSurprise] = useState(false);
   const [runawayStyle, setRunawayStyle] = useState({ top: 58, left: 62 });
   const [runawayLabel, setRunawayLabel] = useState("Catch me if you can");
@@ -267,6 +273,26 @@ export default function Home() {
       setProposeCelebrate(true);
       setTimeout(() => setProposeCelebrate(false), 6000);
     }
+    if (selectedDay === "9" && unlocked) {
+      setChocoCelebrate(true);
+      setTimeout(() => setChocoCelebrate(false), 6000);
+    }
+    if (selectedDay === "10" && unlocked) {
+      setTeddyCelebrate(true);
+      setTimeout(() => setTeddyCelebrate(false), 6000);
+    }
+    if (selectedDay === "12" && unlocked) {
+      setHugCelebrate(true);
+      setTimeout(() => setHugCelebrate(false), 6000);
+    }
+    if (selectedDay === "13" && unlocked) {
+      setKissCelebrate(true);
+      setTimeout(() => setKissCelebrate(false), 6000);
+    }
+    if (selectedDay === "14" && unlocked) {
+      setValentineCelebrate(true);
+      setTimeout(() => setValentineCelebrate(false), 6000);
+    }
   };
 
   const handleAppUnlock = (unlocked: boolean) => {
@@ -287,6 +313,7 @@ export default function Home() {
     const currentDay = today.getDate();
     const currentMonth = today.getMonth() + 1;
     const targetDay = Number(day);
+
 
     const start = new Date(today.getFullYear(), 1, targetDay, 16, 0, 0, 0);
     const end = new Date(today.getFullYear(), 1, targetDay + 1, 16, 0, 0, 0);
@@ -536,6 +563,22 @@ export default function Home() {
                     </div>
                     <p className="rose-glow-text text-base font-semibold text-rose-100 sm:text-lg">
                       A forever kind of yes, wrapped in sparkle. 💍
+                    </p>
+                  </div>
+                ) : selectedDay === "9" ? (
+                  <div className="space-y-4">
+                    <div className="overflow-hidden rounded-2xl border border-rose-400/30 bg-rose-950/40">
+                      <video
+                        className="propose-video h-60 w-full object-contain sm:h-72"
+                        src="/VP2026/choc_day.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      />
+                    </div>
+                    <p className="rose-glow-text text-base font-semibold text-rose-100 sm:text-lg">
+                      Sweet moments, sweeter us. 🍫
                     </p>
                   </div>
                 ) : (
@@ -821,6 +864,81 @@ export default function Home() {
           ))}
           <div className="propose-glow">💍</div>
           <div className="propose-burst" />
+        </div>
+      ) : null}
+
+      {chocoCelebrate ? (
+        <div className="choco-celebration pointer-events-none">
+          {Array.from({ length: 20 }).map((_, index) => (
+            <span
+              key={`choco-drop-${index}`}
+              className="choco-drop"
+              style={{
+                left: `${(index % 8) * 12 + 6}%`,
+                animationDelay: `${index * 0.15}s`,
+              }}
+            />
+          ))}
+          <div className="choco-heart">🍫</div>
+        </div>
+      ) : null}
+
+      {teddyCelebrate ? (
+        <div className="teddy-celebration pointer-events-none">
+          {Array.from({ length: 16 }).map((_, index) => (
+            <span
+              key={`teddy-${index}`}
+              className="teddy-float"
+              style={{
+                left: `${(index % 8) * 12 + 6}%`,
+                animationDelay: `${index * 0.2}s`,
+              }}
+            >
+              🧸
+            </span>
+          ))}
+        </div>
+      ) : null}
+
+      {hugCelebrate ? (
+        <div className="hug-celebration pointer-events-none">
+          <div className="hug-ring" />
+          <div className="hug-ring hug-ring-delay" />
+          <div className="hug-ring hug-ring-delay-2" />
+          <div className="hug-center">🤗</div>
+        </div>
+      ) : null}
+
+      {kissCelebrate ? (
+        <div className="kiss-celebration pointer-events-none">
+          {Array.from({ length: 18 }).map((_, index) => (
+            <span
+              key={`kiss-${index}`}
+              className="kiss-mark"
+              style={{
+                left: `${(index % 6) * 16 + 8}%`,
+                animationDelay: `${index * 0.18}s`,
+              }}
+            >
+              💋
+            </span>
+          ))}
+        </div>
+      ) : null}
+
+      {valentineCelebrate ? (
+        <div className="valentine-celebration pointer-events-none">
+          {Array.from({ length: 20 }).map((_, index) => (
+            <span
+              key={`valentine-${index}`}
+              className="valentine-heart"
+              style={{
+                left: `${(index % 8) * 12 + 6}%`,
+                animationDelay: `${index * 0.15}s`,
+              }}
+            />
+          ))}
+          <div className="valentine-core">💘</div>
         </div>
       ) : null}
     </div>

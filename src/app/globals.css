@@ -716,6 +716,269 @@ body {
   }
 }
 
+.choco-celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at center,
+    rgba(139, 69, 19, 0.25),
+    transparent 65%
+  );
+  animation: fadeLayer 6s ease forwards;
+}
+
+.choco-drop {
+  position: absolute;
+  top: -10%;
+  width: 14px;
+  height: 18px;
+  background: linear-gradient(140deg, #6f3b1c, #c78b5a);
+  border-radius: 40% 60% 70% 30%;
+  opacity: 0;
+  animation: chocoFall 5.6s ease-in-out forwards;
+}
+
+.choco-heart {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  font-size: 64px;
+  filter: drop-shadow(0 0 18px rgba(199, 139, 90, 0.8));
+  animation: chocoPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes chocoFall {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.6);
+  }
+  20% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(110vh) scale(1.15);
+  }
+}
+
+@keyframes chocoPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.8;
+  }
+}
+
+.teddy-celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at center,
+    rgba(247, 181, 198, 0.22),
+    transparent 65%
+  );
+  animation: fadeLayer 6s ease forwards;
+}
+
+.teddy-float {
+  position: absolute;
+  top: -10%;
+  font-size: 26px;
+  opacity: 0;
+  animation: teddyDrift 5.8s ease-in-out forwards;
+}
+
+.hug-celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 214, 224, 0.25),
+    transparent 65%
+  );
+  animation: fadeLayer 6s ease forwards;
+}
+
+.hug-ring {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 214, 224, 0.6);
+  animation: hugRipple 3s ease-out infinite;
+}
+
+.hug-ring-delay {
+  animation-delay: 0.8s;
+}
+
+.hug-ring-delay-2 {
+  animation-delay: 1.6s;
+}
+
+.hug-center {
+  font-size: 64px;
+  filter: drop-shadow(0 0 18px rgba(255, 214, 224, 0.8));
+  animation: hugPulse 2.6s ease-in-out infinite;
+}
+
+.kiss-celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 107, 138, 0.2),
+    transparent 65%
+  );
+  animation: fadeLayer 6s ease forwards;
+}
+
+.kiss-mark {
+  position: absolute;
+  top: -10%;
+  font-size: 26px;
+  opacity: 0;
+  animation: kissFall 5.6s ease-in-out forwards;
+}
+
+.valentine-celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 107, 138, 0.28),
+    transparent 65%
+  );
+  animation: fadeLayer 6s ease forwards;
+}
+
+.valentine-heart {
+  position: absolute;
+  top: -10%;
+  width: 16px;
+  height: 16px;
+  background: var(--rose);
+  opacity: 0;
+  transform: rotate(45deg);
+  animation: welcomeFall 5.4s ease-in-out forwards;
+}
+
+.valentine-heart::before,
+.valentine-heart::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--rose);
+}
+
+.valentine-heart::before {
+  left: -8px;
+}
+
+.valentine-heart::after {
+  top: -8px;
+}
+
+.valentine-core {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  font-size: 68px;
+  filter: drop-shadow(0 0 22px rgba(255, 107, 138, 0.9));
+  animation: valentinePulse 2.6s ease-in-out infinite;
+}
+
+@keyframes teddyDrift {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.8) rotate(0deg);
+  }
+  20% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(110vh) scale(1.1) rotate(10deg);
+  }
+}
+
+@keyframes hugRipple {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes hugPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+}
+
+@keyframes kissFall {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.7) rotate(-8deg);
+  }
+  25% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(110vh) scale(1.1) rotate(12deg);
+  }
+}
+
+@keyframes valentinePulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.8;
+  }
+}
+
 @keyframes shimmerMove {
   0% {
     background-position: 0% center;
