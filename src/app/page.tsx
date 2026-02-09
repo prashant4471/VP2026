@@ -581,6 +581,93 @@ export default function Home() {
                       Sweet moments, sweeter us. 🍫
                     </p>
                   </div>
+                ) : selectedDay === "10" ? (
+                  <div className="space-y-4">
+                    <div className="overflow-hidden rounded-2xl border border-rose-400/30 bg-rose-950/40">
+                      <video
+                        className="propose-video h-60 w-full object-contain sm:h-72"
+                        src="/VP2026/teddy_day.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      />
+                    </div>
+                    <p className="rose-glow-text text-base font-semibold text-rose-100 sm:text-lg">
+                      Cozy cuddles on repeat. 🧸
+                    </p>
+                  </div>
+                ) : selectedDay === "11" ? (
+                  <div className="space-y-4">
+                    <div className="overflow-hidden rounded-2xl border border-rose-400/30 bg-rose-950/40">
+                      <video
+                        className="propose-video h-60 w-full object-contain sm:h-72"
+                        src="/VP2026/promise_day.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      />
+                    </div>
+                    <p className="rose-glow-text text-base font-semibold text-rose-100 sm:text-lg">
+                      Promises that glow forever. 🤞
+                    </p>
+                  </div>
+                ) : selectedDay === "12" ? (
+                  <div className="space-y-4">
+                    <div className="overflow-hidden rounded-2xl border border-rose-400/30 bg-rose-950/40">
+                      <video
+                        className="propose-video h-60 w-full object-contain sm:h-72"
+                        src="/VP2026/hug_day.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      />
+                    </div>
+                    <p className="rose-glow-text text-base font-semibold text-rose-100 sm:text-lg">
+                      A hug that never ends. 🤗
+                    </p>
+                  </div>
+                ) : selectedDay === "13" ? (
+                  <div className="space-y-4">
+                    <div className="overflow-hidden rounded-2xl border border-rose-400/30 bg-rose-950/40">
+                      <video
+                        className="propose-video h-60 w-full object-contain sm:h-72"
+                        src="/VP2026/kiss_day.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      />
+                    </div>
+                    <p className="rose-glow-text text-base font-semibold text-rose-100 sm:text-lg">
+                      Sealed with a kiss. 💋
+                    </p>
+                  </div>
+                ) : selectedDay === "14" ? (
+                  <div className="space-y-4">
+                    <div className="overflow-hidden rounded-2xl border border-rose-400/30 bg-rose-950/40">
+                      <video
+                        className="propose-video h-60 w-full object-contain sm:h-72"
+                        src="/VP2026/valentines_day.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      />
+                    </div>
+                    <p className="rose-glow-text text-base font-semibold text-rose-100 sm:text-lg">
+                      My forever Valentine. 💘
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setShowSurprise(true)}
+                      className="mt-2 w-full rounded-full bg-rose-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-rose-500"
+                    >
+                      Open your surprise
+                    </button>
+                  </div>
                 ) : (
                   <>
                     <p className="text-xs uppercase tracking-[0.3em] text-rose-300">
