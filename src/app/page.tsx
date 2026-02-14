@@ -309,30 +309,45 @@ export default function Home() {
   const isRoseDay = selectedDay === "7";
 
   const handleDaySelect = (day: string) => {
-    const today = new Date();
-    const currentDay = today.getDate();
-    const currentMonth = today.getMonth() + 1;
+    const now = new Date();
+    const currentDay = now.getDate();
+    const currentMonth = now.getMonth() + 1;
     const targetDay = Number(day);
 
+    if (currentMonth !== 2) {
+      setDayMessage("These surprises open during February 7-14 only.");
+      return;
+    }
 
-    const start = new Date(today.getFullYear(), 1, targetDay, 16, 0, 0, 0);
-    const end = new Date(today.getFullYear(), 1, targetDay + 1, 16, 0, 0, 0);
-
-    if (currentMonth === 2 && today >= start && today < end) {
+    if (targetDay < currentDay) {
       setSelectedDay(day);
       setDayMessage(null);
       return;
     }
 
-    if (currentMonth === 2 && today < start) {
+    if (targetDay === currentDay) {
+      const unlockTime = new Date(
+        now.getFullYear(),
+        1,
+        targetDay,
+        17,
+        0,
+        0,
+        0
+      );
+      if (now >= unlockTime) {
+        setSelectedDay(day);
+        setDayMessage(null);
+        return;
+      }
       setDayMessage(
-        "Not yet, gorgeous. This surprise opens at 4:00 PM and is saving its best just for you."
+        "Not yet, gorgeous. This surprise opens at 5:00 PM and is saving its best just for you."
       );
       return;
     }
 
     setDayMessage(
-      "This card only opens from 4:00 PM to 4:00 PM the next day. Come back in its perfect window."
+      "Not yet, gorgeous. Each card opens on its day at 5:00 PM."
     );
   };
 
