@@ -168,13 +168,16 @@ const dayContent: Record<string, DayContent> = {
   "14": {
     name: "Valentine's Day",
     emoji: "💘",
-    headline: "You are my once-in-a-lifetime kind of love.",
+    headline: "You are my favorite kind of love.",
     intro: "Today is for the grandest confession: I choose you, always.",
     vibe: "Slow dancing, candlelight, and a heart full of fireworks.",
     dares: [
-      "Tell me your favorite thing about today.",
-      "Pick the dessert we should share.",
-      "Choose the song for our forever dance.",
+      "Tell me one small moment with me that you keep replaying.",
+      "What is the softest thing you want to hear from me tonight?",
+      "Name one little habit of mine you secretly love.",
+      "Describe the look you want me to give you across the room.",
+      "If we could pause time for 10 minutes, what would we do?",
+      "What nickname would you want just for us?",
     ],
     spotlight: "You are my forever favorite answer.",
     closing: "Happy Valentine's Day, my love. I'm all yours.",
@@ -330,7 +333,7 @@ export default function Home() {
         now.getFullYear(),
         1,
         targetDay,
-        17,
+        19,
         0,
         0,
         0
@@ -705,7 +708,7 @@ export default function Home() {
                     ) : null}
                   </>
                 )}
-                {selectedDay === "14" && !isRoseDay ? (
+                {/* {selectedDay === "14" && !isRoseDay ? (
                   <button
                     type="button"
                     onClick={() => setShowSurprise(true)}
@@ -713,7 +716,7 @@ export default function Home() {
                   >
                     Open your surprise
                   </button>
-                ) : null}
+                ) : null} */}
               </div>
             </div>
           </div>
@@ -824,15 +827,18 @@ export default function Home() {
       ) : null}
 
       {showSurprise ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-rose-950/60 px-6 backdrop-blur">
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-rose-950/60 px-6 backdrop-blur">
           <div className="glass-card romantic-glow w-full max-w-lg rounded-3xl p-8 text-center text-rose-100">
             <p className="text-xs uppercase tracking-[0.3em] text-rose-300">
-              Surprise unlocked
+              A little secret
             </p>
-            <h2 className="mt-4 text-2xl font-semibold">Dinner is on me.</h2>
+            <h2 className="mt-4 text-2xl font-semibold">
+              Your surprise box is waiting.
+            </h2>
             <p className="mt-3 text-sm leading-relaxed text-rose-200/80">
-              Dress comfy, bring your smile, and be ready for a night of cozy
-              surprises. Your kiss voucher is valid for unlimited use.
+              Tonight is ours: soft lights, cozy vibes, and dinner with your
+              favorite person. I set aside a little surprise box just for you,
+              wrapped in all the love.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <button
@@ -842,12 +848,12 @@ export default function Home() {
               >
                 Close
               </button>
-              <button
+              {/* <button
                 type="button"
                 className="rounded-full bg-rose-600 px-5 py-2 text-sm font-semibold text-white"
               >
                 Claim the kiss
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
